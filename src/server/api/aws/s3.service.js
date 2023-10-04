@@ -3,11 +3,15 @@ const Busboy = require('busboy');
 
 const aws = require('../../config/aws');
 
-let s3bucket = new AWS.S3({
-    accessKeyId: aws.medicine.IAM_USER_KEY,
-    secretAccessKey: aws.medicine.IAM_USER_SECRET,
-    Bucket: aws.medicine.BUCKET_NAME
-});
+// let s3bucket = new AWS.S3({
+//     accessKeyId: aws.medicine.IAM_USER_KEY,
+//     secretAccessKey: aws.medicine.IAM_USER_SECRET,
+//     Bucket: aws.medicine.BUCKET_NAME
+// });
+
+
+AWS.config.update({ accessKeyId: aws.medicine.IAM_USER_KEY, secretAccessKey: aws.medicine.IAM_USER_SECRET });
+const S3 = new AWS.S3();
 
 
 module.exports.uploadToS3 = function (req, bucketName) {
@@ -50,6 +54,47 @@ module.exports.uploadToS3 = function (req, bucketName) {
         });
         // req.pipe(busboy);
     });
+}
+
+
+module.exports.uploadToS3 = function (req, bucketName) {
+    let chunks = [], fname, ftype, fEncoding;
+    let busboy =  Busboy({ headers: req.headers });
+    busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
+        console.log('File [' + fieldname + ']: filename: ' + filename + ', encoding: ' + encoding + ', mimetype: ' + mimetype);
+        fname = filename.replace(/ /g,"_");
+        ftype = mimetype;
+        fEncoding = encoding;
+        file.on('data', function(data) {
+            // you will get chunks here will pull all chunk to an array and later concat it.
+            console.log (chunks.length);
+            chunks.push(data)
+        });
+        file.on('end', function() {
+            console.log('File [' + filename + '] Finished');
+        });
+    });
+    busboy.on('finish', function() {
+        const userId = UUID();
+        const params = {
+            Bucket: aws.medicine.BUCKET_NAME, // your s3 bucket name
+            Key: `${fname}`, 
+            Body: Buffer.concat(chunks), // concatinating all chunks
+            ACL: 'public-read',
+            ContentEncoding: fEncoding, // optional
+            ContentType: ftype // required
+        }
+        // we are sending buffer data to s3.
+        S3.upload(params, (err, s3res) => {
+            if (err){
+              res.send({err, status: 'error'});
+            } else {
+              res.send({data:s3res, status: 'success', msg: 'Image successfully uploaded.'});
+            }
+        });
+        
+    });
+    req.pipe(busboy);
 }
 
 
