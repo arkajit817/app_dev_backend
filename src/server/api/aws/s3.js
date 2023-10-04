@@ -2,7 +2,7 @@ const fs = require('fs')
 const S3 = require('aws-sdk/clients/s3')
 
 const bucketName = 'medicinedocs'
-const region =  'Asia Pacific (Mumbai) ap-south-1' 
+const region =  'ap-south-1' 
 const accessKeyId = 'AKIA4PDKKBXAI62QF7UQ' 
 const secretAccessKey = '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'
 
