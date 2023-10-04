@@ -238,16 +238,16 @@ function uploadFile (buffer, fileParams)  {
 // });
 
 
-router.get('/download/:id', (req, res) => {
-    Quotation.findById(req.params.id)
-        .select('s3Location -_id')
-        .then((quotation) => {
-            if (!quotation) return res.status(404).json('No quotation found.');
-            res.status(200).send(quotation.s3Location);
-        })
-        .catch((err) => res.status(500).send(err));
-});
+// router.get('/download/:id', (req, res) => {
+//     Quotation.findById(req.params.id)
+//         .select('s3Location -_id')
+//         .then((quotation) => {
+//             if (!quotation) return res.status(404).json('No quotation found.');
+//             res.status(200).send(quotation.s3Location);
+//         })
+//         .catch((err) => res.status(500).send(err));
+// });
 
 
-module.exports = router;
+// module.exports = router;
 
