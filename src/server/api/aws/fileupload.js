@@ -18,8 +18,8 @@ router.route("/").post(upload.single('image'),async(req, res) => {
   
     // apply filter
     // resize 
-  
-    const result = await uploadFile(file)
+    let uploadfiletype = req.body.type ;
+    const result = await uploadFile(file, uploadfiletype)
     await unlinkFile(file.path)
     console.log(result)
     const description = req.body.description
