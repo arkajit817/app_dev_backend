@@ -6,10 +6,10 @@ const treatmentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'basic_information',
     },
-    patient: [{
+    patient: {
         type: String,
         required: true
-    }],
+    },
     treatment_start_date: {
         type: String,
         required: true
@@ -80,18 +80,18 @@ const treatmentSchema = new Schema({
         required: true
     }],
     
-
-
-
 },
     {
-        collection: "medication"
+        collection: "treatment"
     });
-module.exports = mongoose.model('medication', medicationSchema)
-
-medicationSchema.plugin(require('mongoose-timestamp'));
-medicationSchema.plugin(require('mongoose-delete'), {
+treatmentSchema.plugin(require('mongoose-timestamp'));
+treatmentSchema.plugin(require('mongoose-delete'), {
     overrideMethods: true,
     deletedAt: true
 });
-const Medication = module.exports = mongoose.model('Image', medicationSchema);
+
+module.exports = mongoose.model('treatmentSchema', treatmentSchema)
+
+
+// mongoose.model('Image', treatmentSchema);
+// mongoose.model('basicInformation', basicInformationSchema)
