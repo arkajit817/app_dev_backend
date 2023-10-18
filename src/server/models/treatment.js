@@ -34,14 +34,7 @@ const treatmentSchema = new Schema({
         type: String,
         required: true
     }],
-    treatment_goal: [{
-        type: String,
-        required: true
-    }],
-    associated_tests: [{
-        type: String,
-        required: true
-    }],
+
     treating_doctors : [{
         type: Schema.Types.ObjectId,
         ref: 'basic_information',
