@@ -1,0 +1,18 @@
+[{
+    "userId": "64f73fcaaa0e0a82ab482d9a",
+    "patient": "arkajit",
+    "treatment_start_date": "2023-12-01",
+    "treatment_end_date": "2023-12-01",
+    "symptoms": ["sneeze", "coughx"],
+    "treatment_goal": ["fitness"],
+    "associated_tests": ["abc"],
+    "medication": ["abc"],
+    "medical_procedures": ["abc"],
+    "medical_advice": ["abc"],
+    "patient_requests": ["qwer"],
+    "diagnosis": ["xray"],
+    "institutions": ["asasa"],
+    "status": "true",
+    "comments": ["asdfgh"],
+    "treating_doctor": ["6512f37fa75bb1e6803abda6"]
+  }]
