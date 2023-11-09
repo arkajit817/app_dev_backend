@@ -24,4 +24,23 @@ router.route("/").get(async (req, res, next) => {
     res.send(reportHistoryData);
 });
 
+
+router.route("/:reportid").get(async (req, res, next) => {
+    const { email } = req.user[0];
+    let output = [];
+    const personInfo = await basicInformation.find({ email }, { _id: 1 });
+    const userId = personInfo[0]._id.toString();
+    const reportHistoryData = await reportHistory.findOne({ "userId": new ObjectId(userId), _id : req.params.reportid });
+    console.log(JSON.parse(JSON.stringify(reportHistoryData)));
+    console.log(typeof reportHistoryData);
+    console.log(reportHistoryData);
+    // if (typeof reportHistoryData === "object") {
+    //     output = [reportHistoryData];
+    // } else {
+    //     output = [...reportHistoryData];
+
+    // }
+    res.send(reportHistoryData);
+});
+
 module.exports = router;
