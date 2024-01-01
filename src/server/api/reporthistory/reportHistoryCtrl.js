@@ -30,6 +30,7 @@ router.route("/:reportid").get(async (req, res, next) => {
     let output = [];
     const personInfo = await basicInformation.find({ email }, { _id: 1 });
     const userId = personInfo[0]._id.toString();
+    console.log({ "userId": new ObjectId(userId), _id: req.params.reportid })
     const reportHistoryData = await reportHistory.findOne({ "userId": new ObjectId(userId), _id : req.params.reportid });
     console.log(JSON.parse(JSON.stringify(reportHistoryData)));
     console.log(typeof reportHistoryData);

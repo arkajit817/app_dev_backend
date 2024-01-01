@@ -4,22 +4,26 @@ const reportSchema = require("./../src/server/models/reportHistory");
 
 
 const data = [{
-    "userId": "6512b4c0a75bb1e6803abda2",
+    "userId": "654a869ec306d98f2a0b5e18",
     "report_date": "2023-10-02",
     "lab_name": "gs labs",
     "prescribing_doctor": "sharma",
     "report_summary": [
         "ad sd dsfsfsdfsdfsdf",
-    ]
+    ],
+   "report_findings":"Some random text"
 },
 {
-    "userId": "64f75b6589a431984f6b25a3",
+    "userId": "654a869ec306d98f2a0b5e18",
     "report_date": "2023-10-02",
     "lab_name": "gs labs",
     "prescribing_doctor": "sharma",
     "report_summary": [
         "ad sd dsfsfsdfsdfsdf",
-    ]
+    ],
+    "report_findings": "Some random text"
+
+    
 }];
 
 

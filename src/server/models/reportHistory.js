@@ -21,7 +21,10 @@ const reportHistorySchema = new Schema({
     report_summary: [{
         type: Array,
         required: true
-    }]
+    }],
+    report_findings: {
+        type:String
+    }
 },
     {
         collection: "report_history"
