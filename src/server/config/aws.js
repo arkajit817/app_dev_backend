@@ -1,20 +1,20 @@
 module.exports = {
     medicine: {
-        BUCKET_NAME: 'medicinedocs',
-        IAM_USER_KEY: 'AKIA4PDKKBXAI62QF7UQ',
-        IAM_USER_SECRET: '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',
+        BUCKET_NAME: 'medicinedoc',
+        IAM_USER_KEY: 'AKIA6NXW77QNVBIGBG4P',
+        IAM_USER_SECRET: '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',
         region : 'ap-south-1'
     },
     report: {
-        BUCKET_NAME: 'reportdocsapp',
-        IAM_USER_KEY: 'AKIA4PDKKBXAI62QF7UQ',
-        IAM_USER_SECRET: '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',
+        BUCKET_NAME: 'reportdocapp',
+        IAM_USER_KEY: 'AKIA6NXW77QNVBIGBG4P',
+        IAM_USER_SECRET: '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',
         region : 'ap-south-1'
     },
     treatment: {
-        BUCKET_NAME: 'treatmentdocs',
-        IAM_USER_KEY: 'AKIA4PDKKBXAI62QF7UQ',
-        IAM_USER_SECRET: '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',
+        BUCKET_NAME: 'treatmentdoc',
+        IAM_USER_KEY: 'AKIA6NXW77QNVBIGBG4P',
+        IAM_USER_SECRET: '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',
         region : 'ap-south-1'
     }
 }
