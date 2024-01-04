@@ -22,6 +22,7 @@ function uploadFile(file, uploadfiletype) {
     })
     // let uuid = uuidv4();
     let bucketname = aws[uploadfiletype]['BUCKET_NAME'];
+    console.log(bucketname,"bucketname")
     const uploadParams = {
         Bucket: bucketname,
         Body: fileStream,
