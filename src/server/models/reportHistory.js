@@ -24,6 +24,9 @@ const reportHistorySchema = new Schema({
     }],
     report_findings: {
         type:String
+    },
+    report_img_details: {
+        type:Array
     }
 },
     {

@@ -36,7 +36,7 @@ const checkToken = require("./utils/tokenValidation");
 router.use('/app/registration',  require('./api/registrationpage/registrationPageRoutes'));
 router.use('/app/login', require('./api/login/loginCtrl'));
 router.use('/app/user',  require('./api/login/loginCtrl'));
-router.use('/app/upload', require('./api/aws/fileupload'));
+router.use('/app/upload', checkToken, require('./api/aws/fileupload'));
 router.use('/app/reporthistory', checkToken ,require('./api/reporthistory/reportHistoryCtrl'));
     
 

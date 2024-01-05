@@ -4,15 +4,16 @@ const uuidv4 = require('uuidv4');
 
 // const bucketName = 'medicinedocs'
 const region = 'ap-south-1'
-const accessKeyId = 'AKIA4PDKKBXAI62QF7UQ'
-const secretAccessKey = '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'
+const accessKeyId = 'AKIA6NXW77QNVBIGBG4P'
+const secretAccessKey = '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'
 
 const aws = require('../../config/aws');
 
 
 // uploads a file to s3
-function uploadFile(file, uploadfiletype) {
-    console.log(uploadfiletype,"ttyyyy")
+function uploadFile(file, uploadfiletype, email) {
+    console.log(uploadfiletype, "ttyyyy")
+    console.log(file,'------file-----');
     const fileStream = fs.createReadStream(file.path)
     console.log(aws,"aws")
     const s3 = new S3({
