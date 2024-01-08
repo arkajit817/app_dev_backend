@@ -1,5 +1,5 @@
 const env = process.env.NODE_ENV || 'development';
- 
+//  dotenv.config();
 const baseConfig = {
     env,
     isDev:env === 'development',

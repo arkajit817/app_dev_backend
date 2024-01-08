@@ -1,11 +1,15 @@
 const fs = require('fs')
 const S3 = require('aws-sdk/clients/s3')
 const uuidv4 = require('uuidv4');
+const dotenv = require('dotenv')
 
 // const bucketName = 'medicinedocs'
-const region = 'ap-south-1'
-const accessKeyId = 'AKIA6NXW77QNVBIGBG4P'
-const secretAccessKey = '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'
+// IAM_USER_KEY: process.env.IAM_USER_KEY,
+// IAM_USER_SECRET: process.env.IAM_USER_SECRET,
+// region: process.env.REGION
+const region = process.env.REGION
+const accessKeyId = process.env.IAM_USER_KEY
+const secretAccessKey = process.env.IAM_USER_SECRET
 
 const aws = require('../../config/aws');
 
