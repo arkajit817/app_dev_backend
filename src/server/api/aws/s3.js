@@ -27,7 +27,7 @@ function uploadFile(file, uploadfiletype, email) {
     const uploadParams = {
         Bucket: bucketname,
         Body: fileStream,
-        Key: `${'dummy'}-${file.filename}`
+        Key: `${'img'}-${file.originalname}`
     }
 
     return s3.upload(uploadParams).promise()

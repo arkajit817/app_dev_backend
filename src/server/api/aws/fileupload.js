@@ -13,7 +13,7 @@ const upload = multer({ dest: 'uploads/' })
 
 const { uploadFile, getFileStream } = require('./s3')
 
-async function dbUpdate(result, email) {
+async function dbUpdate(result, email, file) {
     console.log(result, '-------result--------');
     console.log(email, '--------email--------');
 
@@ -21,8 +21,9 @@ async function dbUpdate(result, email) {
     userId = userId[0]._id.toString();
     console.log(userId);
     let obj = {
-        imgLocation: result["Location"],
-        date: new Date()
+        imgLocation: `${result["Location"]}`,
+        date: new Date(),
+        fileName: `${'img'}-${file.originalname}`
     }
     const reportHistoryData = await reportHistory.findOne({ "userId": new ObjectId(userId) });
     if (reportHistoryData) {
@@ -36,7 +37,7 @@ async function dbUpdate(result, email) {
                 }
             }
         );
-        console.log(d,'------------');
+        console.log(d, '------------');
     }
 }
 
@@ -54,7 +55,7 @@ router.route("/").post(upload.single('image'), async (req, res) => {
 
     const result = await uploadFile(file, uploadfiletype, email);
     await unlinkFile(file.path);
-    let db = await dbUpdate(result, email);
+    let db = await dbUpdate(result, email, file);
 
     console.log(result)
     const description = req.body.description
