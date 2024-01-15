@@ -14,7 +14,6 @@ app.use(
 
 
 // app.use(fileUpload());
-console.log(process.env)
 const port = process.env.PORT ||  8000;
 require('./middlewares/appMiddlewares')(app);
 const api = require('./routes.js');
