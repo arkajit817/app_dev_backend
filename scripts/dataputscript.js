@@ -10,13 +10,14 @@ const path = 'sample.json'
 let filedata = fs.readFileSync(path,'utf8');
 console.log(filedata,"file");
 
-const data = JSON.parse(filedata)
+const data = JSON.parse(filedata);
 
 
 
 require('mongoose').connect(`${config.dbUrl}`).then(async(err,db) => {
   console.log("connected to mongoDB");
-  for (let o of data){
+  for (let o of data) {
+    console.log(o);
     await treatmentSchema.create(o).then((output) => {
       console.log(output);
       console.log(db);

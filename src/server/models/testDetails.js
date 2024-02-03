@@ -36,7 +36,7 @@ const testDetailsSchema = new Schema({
         collection: "test_details"
     });
 
-module.exports = mongoose.model('testDetailsSchema', testDetailsSchema)
+module.exports = mongoose.model('testDetailsSchema', testDetailsSchema);
 
 
 // mongoose.model('Image', treatmentSchema);

@@ -50,7 +50,18 @@ const data = [{
     "diagnostic_test_report": "654a869ec306d98f2a0b5e18t",
     "test_name": "nerve test"
 
-}
+    },
+    {
+        "patientId": "654a869ec306d98f2a0b5e18",
+        "test": "tid002",
+        "test_date": "2023-11-06",
+        "test_numerical_value": 96.9,
+        "test_units": "mg/ml",
+        "test_categorical_value": "negative",
+        "diagnostic_test_report": "654a869ec306d98f2a0b5e18t",
+        "test_name": "platlette count"
+
+    }
 ];
 
 
