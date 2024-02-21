@@ -28,7 +28,27 @@ const basicInformationSchema = new Schema({
     // userType : {
     //     type: String,
     //     required: true
-    // }
+    // },
+    sex : {
+        type : String,
+        required : true
+    },
+    dob : {
+        type : String,
+        required : true
+    },
+    pincode : {
+        type : String,
+        required : true
+    },
+    phone : {
+        type : Number,
+        required : true
+    },
+    medicalrecords : [{
+        type: Schema.Types.ObjectId,
+        ref: 'report_details',
+    }]
     
 
 },
