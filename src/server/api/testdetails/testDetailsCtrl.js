@@ -4,12 +4,14 @@ const { genSaltSync, compareSync } = require("bcryptjs");
 const { sign } = require("jsonwebtoken");
 const testDetails = require("./../../models/testDetails");
 const basicInformation = require("./../../models/basicInformation");
+const reportHistory = require("./../../models/reportHistory");
 var ObjectId = require('mongoose').Types.ObjectId;
 
 router.route("/").get(async (req, res, next) => {
     try {
         const { email } = req.user[0];
         let output = [];
+        // let reportId = '';
         const personInfo = await basicInformation.find({ email }, { _id: 1 });
         const userId = personInfo[0]._id.toString();
         const testDetailsData = await testDetails.aggregate([
@@ -49,9 +51,10 @@ router.route("/").get(async (req, res, next) => {
 
             }])
         if (Array.isArray(testDetailsData) && testDetailsData.length > 0) {
-            res.send(testDetailsData);
+            let reportDate = await reportHistory.find({ "userId": new ObjectId(userId) }, { report_date :1,_id:0});
+            res.send({ reportDate: reportDate[0].report_date, testDetailsData });
         } else {
-            res.send([]);
+            res.send({});
         }
     }
     catch (e) {

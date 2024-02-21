@@ -5,6 +5,7 @@ const fs = require('fs')
 const util = require('util')
 const unlinkFile = util.promisify(fs.unlink);
 const reportHistory = require("./../../models/reportHistory");
+const treatmentHistory = require("./../../models/treatment");
 const basicInformation = require("./../../models/basicInformation");
 var ObjectId = require('mongoose').Types.ObjectId;
 
@@ -26,7 +27,20 @@ async function dbUpdate(result, email, file) {
         fileName: `${'img'}-${file.originalname}`
     }
     const reportHistoryData = await reportHistory.findOne({ "userId": new ObjectId(userId) });
-    if (reportHistoryData) {
+    const treatmentHistoryData = await treatmentHistory.findOne({ "userId": new ObjectId(userId) })
+    if (result["Bucket"] === "treatmentdoc" && treatmentHistoryData) {
+        let d = await treatmentHistory.updateOne(
+            { "userId": new ObjectId(userId) },
+            {
+                "$push": {
+                    "treatment_img_details": {
+                        "$each": [obj]
+                    }
+                }
+            }
+        );
+        console.log(d, '------------');
+    } else if (reportHistoryData){
         let d = await reportHistory.updateOne(
             { "userId": new ObjectId(userId) },
             {

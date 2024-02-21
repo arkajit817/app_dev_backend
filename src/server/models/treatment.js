@@ -72,6 +72,12 @@ const treatmentSchema = new Schema({
         type: String,
         required: true
     }],
+    treatment_img_details: {
+        type: Array
+    },
+    summary: {
+        type: String
+    }
     
 },
     {

@@ -40,6 +40,7 @@ router.use('/app/upload', checkToken, require('./api/aws/fileupload'));
 router.use('/app/reporthistory', checkToken ,require('./api/reporthistory/reportHistoryCtrl'));
 router.use('/app/testdetails', checkToken, require('./api/testdetails/testDetailsCtrl'));
 router.use('/app/profile', checkToken, require('./api/profile/profilepage'));
+router.use('/app/treatmentdetails', checkToken, require('./api/treatment/treatmentdetailsCtrl'));
     
 
 module.exports = router;

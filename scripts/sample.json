@@ -1,18 +1,51 @@
 [{
-    "userId": "64f73fcaaa0e0a82ab482d9a",
-    "patient": "arkajit",
-    "treatment_start_date": "2023-12-01",
-    "treatment_end_date": "2023-12-01",
-    "symptoms": ["sneeze", "coughx"],
-    "treatment_goal": ["fitness"],
-    "associated_tests": ["abc"],
-    "medication": ["abc"],
-    "medical_procedures": ["abc"],
-    "medical_advice": ["abc"],
-    "patient_requests": ["qwer"],
-    "diagnosis": ["xray"],
-    "institutions": ["asasa"],
-    "status": "true",
-    "comments": ["asdfgh"],
-    "treating_doctor": ["6512f37fa75bb1e6803abda6"]
-  }]
+  "userId": "654a869ec306d98f2a0b5e18",
+  "patient": "arkajit",
+  "treatment_start_date": "2023-12-01",
+  "treatment_end_date": "2023-12-01",
+  "symptoms": [
+    "sneeze",
+    "coughx"
+  ],
+  "treatment_goal": [
+    "fitness"
+  ],
+  "associated_tests": [
+    "abc"
+  ],
+  "treating_doctors": [],
+  "medication": [
+    "abc"
+  ],
+  "medical_procedures": [
+    "abc"
+  ],
+  "medical_advice": [
+    "abc"
+  ],
+  "patient_requests": [
+    "qwer"
+  ],
+  "diagnosis": [
+    "xrayb"
+  ],
+  "institutions": [
+    "asasa"
+  ],
+  "status": "true",
+  "comments": [
+    "asdfgh"
+  ],
+  "deleted": false,
+  "updatedAt": "2023-10-20T17:53:11.718Z",
+  "createdAt": "2023-10-20T17:53:11.718Z",
+  "__v": 0,
+  "summary":"da afesfsgdr gssd ggs gdgd",
+  "treatment_img_details": [
+    {
+      "imgLocation": "https://treatmentdoc.s3.ap-south-1.amazonaws.com/img-IMG_20190617_185050__01.jpg",
+      "date": "2024-02-03T10:37:26.447Z",
+      "fileName": "img-IMG_20190617_185050__01.jpg"
+    }
+  ]
+}]
