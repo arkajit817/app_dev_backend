@@ -17,7 +17,7 @@ router.route("/").post(async (req, res, next) => {
     { email: email },
     {
       current_level: 1, email: 1, password: 1, _id: 0, role: 1, first_name: 1, last_name: 1, isPayment: 1
-      , plays: 1, player_type: 1, height: 1, height_type: 1, weight:1 ,weight_type:1
+      , plays: 1, player_type: 1, height: 1, height_type: 1, weight:1 ,weight_type:1 , _id : 1
     }
   );
   if (userDetails.length == 0) {
@@ -40,6 +40,7 @@ router.route("/").post(async (req, res, next) => {
         token: jsontoken,
         current_level: userDetails[0].current_level,
         email: userDetails[0].email,
+        _id : userDetails[0]._id,
         role: userDetails[0].role,
         first_name: userDetails[0].first_name,
         last_name: userDetails[0].last_name,
