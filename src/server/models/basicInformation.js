@@ -23,7 +23,7 @@ const basicInformationSchema = new Schema({
     // },
     user_name: {
         type: String,
-        required: true
+        // required: true
     },
     // userType : {
     //     type: String,
@@ -31,19 +31,19 @@ const basicInformationSchema = new Schema({
     // },
     gender : {
         type : String,
-        required : true
+        // required : true
     },
     dob : {
         type : String,
-        required : true
+        // required : true
     },
     pincode : {
         type : String,
-        required : true
+        // required : true
     },
     phone : {
         type : Number,
-        required : true
+        // required : true
     },
     medicalrecords : [{
         type: Schema.Types.ObjectId,
