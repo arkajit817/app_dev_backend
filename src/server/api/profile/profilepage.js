@@ -19,27 +19,28 @@ router.route("/:id").get(async (req, res, next) => {
             status: 504
         })
     }
-  
+
 });
 
 router.route("/").put(async (req, res, next) => {
     const { first_name, last_name } = req.body;
     const email = req.user[0];
     let userObj = { ...req.body };
-    const updatedData = await basicInformation.updateOne(
+    const updatedData = await basicInformation.findOneAndUpdate(
         { email: req.user[0].email }, {
         $set: {
             ...userObj
         }
     }, {
         upsert: false
-    }).catch((err) => {
+    }, ).catch((err) => {
         console.log(err);
         res.status(504).json({
             errMsg: "internal server error",
             status: 504
         })
     })
+    console.log(updatedData, "updated")
     if (updatedData.length != 0) {
         console.log(updatedData);
         res.send(updatedData);
