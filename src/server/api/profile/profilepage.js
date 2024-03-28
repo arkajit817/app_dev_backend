@@ -32,7 +32,7 @@ router.route("/").put(async (req, res, next) => {
             ...userObj
         }
     }, {
-        upsert: false
+        new: true
     }, ).catch((err) => {
         console.log(err);
         res.status(504).json({
