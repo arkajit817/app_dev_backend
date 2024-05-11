@@ -48,7 +48,11 @@ const basicInformationSchema = new Schema({
     medicalrecords : [{
         type: Schema.Types.ObjectId,
         ref: 'report_details',
-    }]
+    }],
+    isActive: {
+        type: Boolean,
+        default:true
+    }
     
 
 },
