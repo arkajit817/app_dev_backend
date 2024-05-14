@@ -20,10 +20,11 @@ router.route("/").post(async (req, res, next) => {
       , plays: 1, player_type: 1, height: 1, height_type: 1, weight: 1, weight_type: 1, _id: 1, isActive: 1
     }
   );
-  if (!userDetails[0].isActive) {
-    res.status(404).send({ message: "user does not exist", status: 404 });
-  }
+
+  
   if (userDetails.length == 0) {
+    res.status(404).send({ message: "user does not exist", status: 404 });
+  } else if (!userDetails[0].isActive) {
     res.status(404).send({ message: "user does not exist", status: 404 });
   } else {
     const passwordCheck = compareSync(password, userDetails[0].password);
@@ -72,13 +73,16 @@ router.route("/").post(async (req, res, next) => {
 
 router.route("/").delete(async (req, res, next) => {
   const { email } = req.body;
-  let isActive = await basicInformation.find({ email }, { isActive: 1 })
+  let isActive = await basicInformation.find({ email }, { isActive: 1 });
+  
   console.log(isActive, '=============');
-  if (!isActive[0].isActive) {
+  if (isActive && isActive.length >0 && !isActive[0].isActive) {
     res.send({
       status: 200,
       msg: "User already deleted..!!!"
     })
+  } else {
+    res.status(404).send({ message: "user does not exist", status: 404 });
   }
   let result = await basicInformation.findOneAndUpdate({
     email
