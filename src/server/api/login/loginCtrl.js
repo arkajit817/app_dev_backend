@@ -21,7 +21,7 @@ router.route("/").post(async (req, res, next) => {
     }
   );
 
-  
+
   if (userDetails.length == 0) {
     res.status(404).send({ message: "user does not exist", status: 404 });
   } else if (!userDetails[0].isActive) {
@@ -72,42 +72,38 @@ router.route("/").post(async (req, res, next) => {
 });
 
 router.route("/").delete(async (req, res, next) => {
-  const { email } = req.body;
-  let isActive = await basicInformation.find({ email }, { isActive: 1 });
-  
-  console.log(isActive, '=============');
-  if (isActive && isActive.length >0 && !isActive[0].isActive) {
-    res.send({
-      status: 200,
-      msg: "User already deleted..!!!"
-    })
-  } else {
+  const { email, password } = req.body;
+  let userDetails = await basicInformation.find({ email }, { isActive: 1, password: 1, email: 1 });
+  console.log(userDetails, '----------isActive-----------');
+
+  if (userDetails && userDetails.length === 0) {
     res.status(404).send({ message: "user does not exist", status: 404 });
+  } else if(userDetails && userDetails.length > 0 && !userDetails[0].isActive) {
+    res.status(404).send({ message: "user does not exist", status: 404 });
+  } else {
+    const passwordCheck = compareSync(password, userDetails[0].password);
+    if (passwordCheck) {
+      let result = await basicInformation.findOneAndUpdate({
+        email
+      }, {
+        isActive: false
+      }, {
+        new: true
+      });
+
+      if (!result.isActive) {
+        res.send({
+          status: 200,
+          msg: "User deleted successfully..!!!"
+        });
+      }
+    } else {
+      res.status(404).send({
+        message: "Invalid username or password",
+        status: 404,
+      });
+    }
   }
-  let result = await basicInformation.findOneAndUpdate({
-    email
-  }, {
-    isActive: false
-  }, {
-    new: true
-  });
-
-  console.log(result, '-----result-----');
-  if (!result.isActive) {
-    res.send({
-      status: 200,
-      msg: "User deleted successfully..!!!"
-    });
-  }
-  // else {
-  //   res.send({
-  //     status: 200,
-  //     msg: "User already deleted..!!!"
-  //   });
-  // }
-
-
-
 });
 
 module.exports = router;
