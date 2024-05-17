@@ -27,7 +27,11 @@ const reportHistorySchema = new Schema({
     },
     report_img_details: {
         type:Array
-    }
+    },
+    diagnosis: [{
+        type: String,
+        required: true
+    }],
 },
     {
         collection: "report_history"

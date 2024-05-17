@@ -28,12 +28,12 @@ app.use('/api/',api);
 
 // if(process.env.ONESERVER === "true"){
     process.env.PORT = 8000;
-    // app.use(
-    //     express.static(path.join(__dirname, "tennis-mgmt-ui/build/"), { maxage: "2h" })
-    // );
-    // app.use('*', (req, res) => {
-    //     res.sendFile(path.join(__dirname, './tennis-mgmt-ui/build/index.html'));
-    // });
+    app.use(
+        express.static(path.join(__dirname, "dist/"), { maxage: "2h" })
+    );
+    app.use('*', (req, res) => {
+        res.sendFile(path.join(__dirname, './dist/index.html'));
+    });
 // }
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

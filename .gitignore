@@ -3,4 +3,5 @@ uploads
 /*.env
 build
 keys
-/.DS_Store
+.DS_Store
+deployment

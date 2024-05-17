@@ -34,7 +34,7 @@ var corsOptions1 = {
 const checkToken = require("./utils/tokenValidation");
 // const requestObjectCreation = require("./utils/requestCreation")
 router.use('/app/registration',  require('./api/registrationpage/registrationPageRoutes'));
-router.use('/app/login', require('./api/login/loginCtrl'));
+// router.use('/app/login', require('./api/login/loginCtrl'));
 router.use('/app/user',  require('./api/login/loginCtrl'));
 router.use('/app/upload', checkToken, require('./api/aws/fileupload'));
 router.use('/app/reporthistory', checkToken ,require('./api/reporthistory/reportHistoryCtrl'));
